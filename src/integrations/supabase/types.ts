@@ -14,7 +14,185 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      debts: {
+        Row: {
+          amount: number
+          amount_paid: number
+          created_at: string
+          customer_name: string
+          due_date: string | null
+          id: string
+          note: string | null
+          phone: string | null
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          amount_paid?: number
+          created_at?: string
+          customer_name: string
+          due_date?: string | null
+          id?: string
+          note?: string | null
+          phone?: string | null
+          user_id?: string
+        }
+        Update: {
+          amount?: number
+          amount_paid?: number
+          created_at?: string
+          customer_name?: string
+          due_date?: string | null
+          id?: string
+          note?: string | null
+          phone?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      expenses: {
+        Row: {
+          amount: number
+          category: string
+          created_at: string
+          id: string
+          note: string | null
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          category?: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          user_id?: string
+        }
+        Update: {
+          amount?: number
+          category?: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          amount: number
+          created_at: string
+          customer_name: string
+          deposit: number
+          description: string
+          due_date: string | null
+          id: string
+          phone: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          customer_name: string
+          deposit?: number
+          description: string
+          due_date?: string | null
+          id?: string
+          phone?: string | null
+          status?: string
+          user_id?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          customer_name?: string
+          deposit?: number
+          description?: string
+          due_date?: string | null
+          id?: string
+          phone?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          cost: number
+          created_at: string
+          id: string
+          low_stock_at: number
+          name: string
+          price: number
+          quantity: number
+          user_id: string
+        }
+        Insert: {
+          cost?: number
+          created_at?: string
+          id?: string
+          low_stock_at?: number
+          name: string
+          price?: number
+          quantity?: number
+          user_id?: string
+        }
+        Update: {
+          cost?: number
+          created_at?: string
+          id?: string
+          low_stock_at?: number
+          name?: string
+          price?: number
+          quantity?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sales: {
+        Row: {
+          created_at: string
+          id: string
+          item_name: string
+          payment_method: string
+          product_id: string | null
+          quantity: number
+          total: number
+          unit_price: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_name: string
+          payment_method?: string
+          product_id?: string | null
+          quantity?: number
+          total?: number
+          unit_price?: number
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_name?: string
+          payment_method?: string
+          product_id?: string | null
+          quantity?: number
+          total?: number
+          unit_price?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
