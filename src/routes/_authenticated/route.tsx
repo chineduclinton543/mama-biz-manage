@@ -26,7 +26,7 @@ function AppLayout() {
   const { user } = useRouteContext({ from: "/_authenticated" });
   const qc = useQueryClient();
   const navigate = useNavigate();
-  const businessName = (user.user_metadata?.business_name as string) || user.email;
+  const businessName = (user.user_metadata?.["business_name"] as string) || user.email;
 
   const signOut = async () => {
     await qc.cancelQueries();
